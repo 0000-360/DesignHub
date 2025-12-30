@@ -140,16 +140,14 @@ const Contact = () => {
                                 <div>
                                     <h3 className="font-bold text-lg mb-4">Follow Us</h3>
                                     <div className="flex gap-3">
-                                        <a href="#" aria-label="Follow us on Facebook" className="w-12 h-12 rounded-full bg-orange-100 hover:bg-orange-500 text-orange-500 hover:text-white flex items-center justify-center transition-all duration-300">
-                                            <FaFacebookF />
-                                        </a>
-                                        <a href="#" aria-label="Follow us on Twitter" className="w-12 h-12 rounded-full bg-blue-100 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center transition-all duration-300">
+                                        
+                                        <a href="https://x.com/designhub_offl#" aria-label="Follow us on Twitter" className="w-12 h-12 rounded-full bg-blue-100 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center transition-all duration-300">
                                             <FaTwitter />
                                         </a>
-                                        <a href="#" aria-label="Follow us on Instagram" className="w-12 h-12 rounded-full bg-pink-100 hover:bg-pink-500 text-pink-500 hover:text-white flex items-center justify-center transition-all duration-300">
+                                        <a href="https://www.instagram.com/designhub_offl?igsh=MTBqZWRsM2x5eDVzcQ==" aria-label="Follow us on Instagram" className="w-12 h-12 rounded-full bg-pink-100 hover:bg-pink-500 text-pink-500 hover:text-white flex items-center justify-center transition-all duration-300">
                                             <FaInstagram />
                                         </a>
-                                        <a href="#" aria-label="Connect with us on LinkedIn" className="w-12 h-12 rounded-full bg-green-100 hover:bg-green-600 text-green-600 hover:text-white flex items-center justify-center transition-all duration-300">
+                                        <a href="https://www.linkedin.com/in/design-hub-198280331/" aria-label="Connect with us on LinkedIn" className="w-12 h-12 rounded-full bg-green-100 hover:bg-green-600 text-green-600 hover:text-white flex items-center justify-center transition-all duration-300">
                                             <FaLinkedinIn />
                                         </a>
                                     </div>

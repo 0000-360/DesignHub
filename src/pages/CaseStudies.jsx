@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import mermaid from 'mermaid'
-import { FiArrowRight, FiTrendingUp, FiUsers, FiClock } from 'react-icons/fi'
+import { FiArrowRight, FiTrendingUp, FiUsers, FiClock, FiExternalLink } from 'react-icons/fi'
 import { BiRupee } from 'react-icons/bi'
 
 const CaseStudies = () => {
@@ -19,7 +19,8 @@ const CaseStudies = () => {
                 { metric: '1k+', label: 'Monthly Site Visitors', icon: <FiUsers /> },
                 { metric: '2 weeks', label: 'Project Turnaround', icon: <FiClock /> },
             ],
-            color: 'orange'
+            color: 'orange',
+            website: 'https://www.mmtigerssportsacademy.com/'
         },
         {
             title: 'Digital Growth for Aashirvadh',
@@ -47,7 +48,8 @@ const CaseStudies = () => {
                 { metric: '15hrs', label: 'Admin Time Saved/Week', icon: <FiClock /> },
                 { metric: '4 weeks', label: 'Project Timeline', icon: <FiClock /> },
             ],
-            color: 'pink'
+            color: 'pink',
+            website: 'https://v0-badminton-academy-dashboard.vercel.app/'
         },
     ]
 
@@ -331,8 +333,20 @@ const CaseStudies = () => {
                                 <div className="card">
                                     {/* Header */}
                                     <div className="mb-8">
-                                        <div className={`inline-block px-4 py-2 bg-${study.color}-100 text-${study.color}-600 rounded-full text-sm font-semibold mb-4`}>
-                                            {study.category}
+                                        <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
+                                            <div className={`inline-block px-4 py-2 bg-${study.color}-100 text-${study.color}-600 rounded-full text-sm font-semibold`}>
+                                                {study.category}
+                                            </div>
+                                            {study.website && (
+                                                <a
+                                                    href={study.website}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className={`inline-flex items-center gap-2 text-${study.color}-600 font-semibold hover:underline`}
+                                                >
+                                                    Visit Live Website <FiExternalLink />
+                                                </a>
+                                            )}
                                         </div>
                                         <h2 className="text-4xl font-bold mb-4">{study.title}</h2>
                                         <p className="text-xl text-gray-600">Client: {study.client}</p>
