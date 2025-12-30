@@ -6,9 +6,9 @@ const VisualDesign = () => {
     return (
         <>
             <SEO
-                title="Visual Design Services | Graphic Design & Branding"
-                description="Captivate your audience with stunning visual design. From logos to marketing collateral, we create visuals that tell your story."
-                canonical="https://www.designhub.com/services/visual-design"
+                title="Visual Design Services | Graphic Design & Branding | DesignHub360"
+                description="Captivate your audience with stunning visual design from DesignHub360. From logos to marketing collateral, we create visuals that tell your story."
+                canonical="https://www.designhub360.in/services/visual-design"
             />
             <div className="pt-24 pb-16 px-6 max-w-7xl mx-auto">
                 <div className="mb-12">

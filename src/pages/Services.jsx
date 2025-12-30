@@ -313,9 +313,9 @@ const Services = () => {
     return (
         <div className="overflow-hidden">
             <SEO
-                title="Digital Services | Web Design, AI Solutions & Branding"
-                description="Explore our data-driven services: AI Solutions, Local SEO, Web Development, and Brand Strategy designed for startups and growing businesses."
-                canonical="https://www.designhub.com/services"
+                title="Digital Services | Web Design, AI Solutions & Branding | DesignHub360"
+                description="Explore DesignHub360's data-driven services: AI Solutions, Local SEO, Web Development, and Brand Strategy designed for startups and growing businesses."
+                canonical="https://www.designhub360.in/services"
             />
             {/* Hero Section */}
             <section className="section-padding bg-gradient-to-br from-orange-50 via-pink-50 to-blue-50">

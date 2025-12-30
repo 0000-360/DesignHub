@@ -8,9 +8,9 @@ const AISolutions = () => {
     return (
         <>
             <SEO
-                title="AI Solutions & Automation Agency | Chatbots & Workflows | DesignHub"
-                description="Future-proof your business with custom AI solutions. We build chatbots, automate workflows, and provide predictive analytics for startups and local businesses."
-                canonical="https://www.designhub.com/services/ai-solutions"
+                title="AI Solutions & Automation Agency | Chatbots & Workflows | DesignHub360"
+                description="Future-proof your business with custom AI solutions from DesignHub360. We build chatbots, automate workflows, and provide predictive analytics for startups."
+                canonical="https://www.designhub360.in/services/ai-solutions"
             />
             <div className="overflow-hidden">
                 {/* Hero Section */}

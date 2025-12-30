@@ -48,9 +48,9 @@ const About = () => {
     return (
         <div className="overflow-hidden">
             <SEO
-                title="About DesignHub | Data-Driven Design & Local SEO Experts"
-                description="Meet DesignHub, the AI-powered agency helping startups and local businesses grow. We combine human creativity with data-driven strategies."
-                canonical="https://www.designhub.com/about"
+                title="About DesignHub360 | Our Story & Mission"
+                description="Learn about DesignHub360, an AI-powered marketing agency helping startups scale. Discover our story, our values, and why we believe in data-driven design."
+                canonical="https://www.designhub360.in/about"
             />
 
             {/* Hero Section */}

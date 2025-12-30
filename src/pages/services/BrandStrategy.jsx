@@ -6,9 +6,9 @@ const BrandStrategy = () => {
     return (
         <>
             <SEO
-                title="Creative Brand Strategy & Identity Design | DesignHub"
-                description="Elevate your brand with world-class strategy and visual identity design. We craft compelling brand stories that resonate with your audience."
-                canonical="https://www.designhub.com/services/brand-strategy"
+                title="Creative Brand Strategy & Identity Design | DesignHub360"
+                description="Elevate your brand with world-class strategy and visual identity design from DesignHub360. We craft compelling brand stories that resonate."
+                canonical="https://www.designhub360.in/services/brand-strategy"
             />
             <div className="pt-24 pb-16 px-6 max-w-7xl mx-auto">
                 <div className="mb-12">

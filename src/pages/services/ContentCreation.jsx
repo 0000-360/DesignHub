@@ -6,9 +6,9 @@ const ContentCreation = () => {
     return (
         <>
             <SEO
-                title="Content Marketing Agency | Copywriting & Strategy"
-                description="Engage your audience with high-quality content. Our content creation services include blog writing, copywriting, video production, and more."
-                canonical="https://www.designhub.com/services/content-creation"
+                title="Content Marketing Agency | Copywriting & Strategy | DesignHub360"
+                description="Engage your audience with high-quality content from DesignHub360. Our content creation services include blog writing, copywriting, video production, and more."
+                canonical="https://www.designhub360.in/services/content-creation"
             />
             <div className="pt-24 pb-16 px-6 max-w-7xl mx-auto">
                 <div className="mb-12">

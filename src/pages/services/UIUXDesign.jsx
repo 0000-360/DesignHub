@@ -6,9 +6,9 @@ const UIUXDesign = () => {
     return (
         <>
             <SEO
-                title="UI/UX Design Services | User Interface & Experience Design"
-                description="Create intuitive and engaging digital experiences with our UI/UX design services. We focus on user-centric design principles."
-                canonical="https://www.designhub.com/services/ui-ux-design"
+                title="UI/UX Design Services | User Interface & Experience Design | DesignHub360"
+                description="Create intuitive and engaging digital experiences with DesignHub360's UI/UX design services. We focus on user-centric design principles."
+                canonical="https://www.designhub360.in/services/ui-ux-design"
             />
             <div className="pt-24 pb-16 px-6 max-w-7xl mx-auto">
                 <div className="mb-12">

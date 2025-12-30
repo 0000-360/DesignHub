@@ -44,10 +44,29 @@ const Home = () => {
     return (
         <div className="overflow-hidden">
             <SEO
-                title="DesignHub | AI-Powered Marketing & Design for Startups"
-                description="DesignHub is an AI-powered marketing agency for startups and local businesses. We offer data-driven web design, local SEO solutions, and strategic branding."
-                canonical="https://www.designhub.com/"
+                title="DesignHub360 | AI-Powered Marketing Agency in India | Web Design & SEO"
+                description="DesignHub360 is India's premier AI-powered marketing agency. We specialize in data-driven web design, local SEO, and brand strategy for startups and growing businesses."
+                canonical="https://www.designhub360.in/"
             />
+            {/* Organization Schema for Brand Signals */}
+            <script type="application/ld+json">
+                {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "DesignHub360",
+                    "url": "https://www.designhub360.in",
+                    "logo": "https://www.designhub360.in/dh-logo-final.png",
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "", // Add if available
+                        "contactType": "customer service"
+                    },
+                    "sameAs": [
+                        "https://www.instagram.com/designhub360", // Add actual social links if known
+                        "https://www.linkedin.com/company/designhub360"
+                    ]
+                })}
+            </script>
             {/* Hero Section - Playful Professional */}
             <section className="min-h-screen flex items-center bg-white overflow-hidden relative pt-20 lg:pt-0">
 

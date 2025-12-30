@@ -6,9 +6,9 @@ const WebDevelopment = () => {
     return (
         <>
             <SEO
-                title="Custom Web Design & Development Agency Near You | DesignHub"
-                description="Looking for local web developers? We build fast, responsive websites for businesses in your area. Get a custom quote today."
-                canonical="https://www.designhub.com/services/web-development"
+                title="Custom Web Design & Development Agency Near You | DesignHub360"
+                description="Looking for local web developers? DesignHub360 builds fast, responsive websites for businesses in your area. Get a custom quote today."
+                canonical="https://www.designhub360.in/services/web-development"
             />
             <div className="pt-24 pb-16 px-6 max-w-7xl mx-auto">
                 <div className="mb-12">

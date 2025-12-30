@@ -23,7 +23,7 @@ const Navbar = () => {
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-3 group">
                         <img
-                            src="/dh-logo-new.png"
+                            src="/dh-logo-final.png"
                             alt="Design Hub Logo"
                             className="h-24 w-auto object-contain"
                         />

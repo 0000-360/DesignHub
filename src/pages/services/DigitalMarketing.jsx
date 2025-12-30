@@ -6,9 +6,9 @@ const DigitalMarketing = () => {
     return (
         <>
             <SEO
-                title="Digital Marketing Agency | SEO, PPC & Content Marketing"
-                description="Drive traffic and convert leads with our comprehensive digital marketing services. SEO, PPC, Social Media, and more."
-                canonical="https://www.designhub.com/services/digital-marketing"
+                title="Digital Marketing Agency | SEO, PPC & Content Marketing | DesignHub360"
+                description="Drive traffic and convert leads with DesignHub360's comprehensive digital marketing services. SEO, PPC, Social Media, and more."
+                canonical="https://www.designhub360.in/services/digital-marketing"
             />
             <div className="pt-24 pb-16 px-6 max-w-7xl mx-auto">
                 <div className="mb-12">
