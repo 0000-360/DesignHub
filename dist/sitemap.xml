@@ -41,6 +41,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.designhub.com/services/ai-solutions</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.designhub.com/case-studies</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -1,0 +1,1 @@
+import{_ as e,d as t}from"./CaseStudies-BQwgBwyZ.js";var o=e((e,o)=>{let s;"sandbox"===o&&(s=t("#i"+e));return t("sandbox"===o?s.nodes()[0].contentDocument.body:"body").select(`[id="${e}"]`)},"getDiagramElement");export{o as g};
