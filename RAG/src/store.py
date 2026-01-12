@@ -6,8 +6,11 @@ from langchain_chroma import Chroma
 import chromadb
 from langchain_core.documents import Document
 
-# Persistence directory for ChromaDB
-PERSIST_DIRECTORY = "d:/Designhub/new website/rag/chroma_db"
+# Get the absolute path of the directory containing this file (src/)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Go up one level to rag/
+RAG_DIR = os.path.dirname(BASE_DIR)
+PERSIST_DIRECTORY = os.path.join(RAG_DIR, "chroma_db")
 
 def get_vector_store():
     """
