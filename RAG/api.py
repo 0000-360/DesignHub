@@ -16,6 +16,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def health_check():
+    return {"status": "ok", "service": "DesignHub RAG API"}
+
 class ChatRequest(BaseModel):
     query: str
 

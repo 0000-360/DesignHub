@@ -16,7 +16,16 @@ def get_vector_store():
     """
     Initialize and return the Chroma vector store with FastEmbed embeddings.
     """
-    embedding_function = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
+    # FastEmbed options
+    # On Vercel, we must use /tmp for any model downloading/caching
+    cache_dir = None
+    if os.environ.get("VERCEL"):
+        cache_dir = "/tmp"
+
+    embedding_function = FastEmbedEmbeddings(
+        model_name="BAAI/bge-small-en-v1.5",
+        cache_dir=cache_dir
+    )
     
     # Check if running in Vercel (read-only filesystem)
     if os.environ.get("VERCEL"):
