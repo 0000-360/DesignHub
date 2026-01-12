@@ -1,13 +1,19 @@
 import os
 from dotenv import load_dotenv
-from langchain_groq import ChatGroq
-from langchain_core.prompts import PromptTemplate
-from rag.src.store import get_vector_store
+# Imports moved to __init__ to prevent load-time crashes
+# from langchain_groq import ChatGroq
+# from langchain_core.prompts import PromptTemplate
+# from rag.src.store import get_vector_store
 
 load_dotenv()
 
 class RAGSystem:
     def __init__(self):
+        # Lazy imports
+        from langchain_groq import ChatGroq
+        from langchain_core.prompts import PromptTemplate
+        from rag.src.store import get_vector_store
+
         # Initialize LLM
         # Using llama3-70b-8192 via Groq for high performance
         api_key = os.getenv("GROQ_API_KEY")

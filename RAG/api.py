@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from rag.src.rag import RAGSystem
+# from rag.src.rag import RAGSystem
 import uvicorn
 import os
 
@@ -36,10 +36,13 @@ async def startup_event():
     global rag_system, init_error
     # Initialize RAG System on startup
     try:
+        print("Importing RAGSystem...")
+        # Lazy import to avoid import-time crashes
+        from rag.src.rag import RAGSystem
         rag_system = RAGSystem()
         print("RAG System initialized successfully.")
     except Exception as e:
-        init_error = str(e)
+        init_error = f"Startup Error: {str(e)}"
         print(f"Failed to initialize RAG System: {e}")
 
 @app.get("/")

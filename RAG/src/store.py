@@ -1,10 +1,10 @@
 import os
 import shutil
 from typing import List
-from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
-from langchain_chroma import Chroma
-import chromadb
-from langchain_core.documents import Document
+# from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
+# from langchain_chroma import Chroma
+# import chromadb
+# from langchain_core.documents import Document
 
 # Get the absolute path of the directory containing this file (src/)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -16,6 +16,11 @@ def get_vector_store():
     """
     Initialize and return the Chroma vector store with FastEmbed embeddings.
     """
+    # Lazy imports to prevent load-time crashes if sqlite is bad
+    from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
+    from langchain_chroma import Chroma
+    import chromadb
+    
     # FastEmbed options
     # Use bundled model in rag/models to avoid runtime download
     models_dir = os.path.join(RAG_DIR, "models")
