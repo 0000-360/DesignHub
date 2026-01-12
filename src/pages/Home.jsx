@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import { FiArrowRight } from 'react-icons/fi'
+import websiteImg from '../assets/website_showcase.jpg'
+import posterImg from '../assets/poster_showcase.jpg'
+import reelsVideo from '../assets/reels_showcase.mp4'
 
 // Services data - minimal, no icons
 const services = [
@@ -44,26 +47,35 @@ const Home = () => {
     return (
         <div className="overflow-hidden">
             <SEO
-                title="DesignHub360 | AI-Powered Marketing Agency in India | Web Design & SEO"
-                description="DesignHub360 is India's premier AI-powered marketing agency. We specialize in data-driven web design, local SEO, and brand strategy for startups and growing businesses."
+                title="DesignHub360 | AI Marketing & Web Design Agency in India"
+                description="DesignHub360 is India's premier AI-powered marketing agency specializing in web design, local SEO, and brand strategy for growing businesses."
                 canonical="https://www.designhub360.in/"
             />
             {/* Organization Schema for Brand Signals */}
+            {/* LocalBusiness Schema for Local SEO */}
             <script type="application/ld+json">
                 {JSON.stringify({
                     "@context": "https://schema.org",
-                    "@type": "Organization",
+                    "@type": "LocalBusiness",
                     "name": "DesignHub360",
                     "url": "https://www.designhub360.in",
                     "logo": "https://www.designhub360.in/dh-logo-final.png",
+                    "image": "https://www.designhub360.in/dh-logo-final.png",
+                    "description": "DesignHub360 is India's premier AI-powered marketing agency specializing in web design, local SEO, and brand strategy.",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressCountry": "IN"
+                    },
+                    "priceRange": "$$",
                     "contactPoint": {
                         "@type": "ContactPoint",
-                        "telephone": "", // Add if available
+                        "telephone": "+91 94898 28169",
                         "contactType": "customer service"
                     },
                     "sameAs": [
-                        "https://www.instagram.com/designhub360", // Add actual social links if known
-                        "https://www.linkedin.com/company/designhub360"
+                        "https://www.instagram.com/designhub360",
+                        "https://www.linkedin.com/company/designhub360",
+                        "https://x.com/designhub_offl"
                     ]
                 })}
             </script>
@@ -100,7 +112,7 @@ const Home = () => {
                                 </h1>
 
                                 <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-                                    Injecting personality into professional strategies. We help bold startups and local businesses scale with AI-powered analytics and design that delights.
+                                    Injecting personality into professional strategies. We help bold startups and local businesses scale with AI-powered analytics, custom web design, and results-driven digital marketing services that delight users and convert visitors.
                                 </p>
 
                                 <div className="flex flex-wrap gap-4">
@@ -239,6 +251,11 @@ const Home = () => {
                                     className="h-40 w-auto object-contain"
                                 />
                                 <img
+                                    src="/client-think-rite-academy.jpg"
+                                    alt="Think Rite Academy"
+                                    className="h-40 w-auto object-contain"
+                                />
+                                <img
                                     src="/client-appu-pattasu-new.png"
                                     alt="Appu Pattasu Kadai"
                                     className="h-40 w-auto object-contain"
@@ -304,6 +321,123 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* Creative Work Section - Showcase */}
+            <section className="py-24 bg-gradient-to-b from-white to-orange-50/30 overflow-hidden relative">
+                {/* Decorative Elements */}
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+                <div className="absolute -left-20 top-40 w-72 h-72 bg-orange-200/20 rounded-full blur-[100px]"></div>
+                <div className="absolute -right-20 bottom-40 w-72 h-72 bg-blue-200/20 rounded-full blur-[100px]"></div>
+
+                <div className="container-custom relative z-10">
+                    <div className="text-center max-w-3xl mx-auto mb-20">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <p className="text-sm uppercase tracking-wider text-[#FF6B35] font-bold mb-4">Portfolio</p>
+                            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Latest Creative Work</h2>
+                            <p className="text-gray-600 text-lg">
+                                From pixel-perfect websites to viral reels and stunning posters, we create digital assets that capture attention.
+                            </p>
+                        </motion.div>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+                        {/* 1. Website Showcase */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            whileHover={{ y: -10 }}
+                            className="group"
+                        >
+                            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl border border-gray-100 bg-white">
+                                <img src={websiteImg} alt="Website Project" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+
+                                {/* Overlay Content */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <p className="text-orange-400 font-bold text-sm mb-2">Web Design & Development</p>
+                                        <h3 className="text-white text-2xl font-bold mb-4">Skating Academy Promotional Website</h3>
+                                        <a
+                                            href="https://www.mmtigerssportsacademy.com/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block w-full text-center px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-[#FF6B35] hover:text-white transition-colors mb-3"
+                                        >
+                                            Visit Website
+                                        </a>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* 2. Poster Design */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            whileHover={{ y: -10 }}
+                            className="group"
+                        >
+                            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl border border-gray-100 bg-white">
+                                <img src={posterImg} alt="Poster Design" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+
+                                {/* Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <p className="text-orange-400 font-bold text-sm mb-2">Dashboard</p>
+                                        <h3 className="text-white text-2xl font-bold mb-2">For Student analysis</h3>
+                                        <a
+                                            href="https://v0-badminton-academy-dashboard.vercel.app/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block w-full text-center px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-[#FF6B35] hover:text-white transition-colors"
+                                        >
+                                            Visit Website
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* 3. Reels Editing */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            whileHover={{ y: -10 }}
+                            className="group"
+                        >
+                            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl border border-gray-100 bg-black">
+                                <video src={reelsVideo} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loop muted playsInline autoPlay />
+
+                                {/* Play Icon Overlay */}
+                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 group-hover:scale-110 transition-transform duration-300">
+                                        <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
+                                    </div>
+                                </div>
+
+                                {/* Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <p className="text-orange-400 font-bold text-sm mb-2">Video Editing</p>
+                                        <h3 className="text-white text-2xl font-bold mb-2">Viral Instagram Reel</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                    </div>
+                </div>
+            </section>
+
             {/* Process Section - Horizontal Timeline */}
             <section style={{ paddingTop: '120px', paddingBottom: '120px' }} className="bg-white-warm">
                 <div className="container-custom">
@@ -337,6 +471,38 @@ const Home = () => {
                             <p className="text-black-light leading-relaxed">
                                 We launch your project and continue optimizing for growth and maximum ROI.
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Why Choose Us Section - Added for SEO Content Depth */}
+            <section className="py-20 bg-white">
+                <div className="container-custom">
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <p className="text-sm uppercase tracking-wider text-orange-500 font-bold mb-4">Why Choose DesignHub360?</p>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6">Expertise that drives real business results</h2>
+                        <p className="text-gray-600 leading-relaxed">
+                            In a crowded digital landscape, you need a partner who understands both the art of design and the science of marketing. Our AI-driven approach ensures your brand not only looks exceptional but performs exceptionally.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div className="p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-gray-100">
+                            <h4 className="text-xl font-bold mb-3">AI-Powered Insights</h4>
+                            <p className="text-gray-600 text-sm">We leverage cutting-edge artificial intelligence to analyze market trends and optimize your campaigns for maximum ROI.</p>
+                        </div>
+                        <div className="p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-gray-100">
+                            <h4 className="text-xl font-bold mb-3">Custom Web Design</h4>
+                            <p className="text-gray-600 text-sm">No templates here. We build fast, responsive, and SEO-friendly websites tailored specifically to your brand identity.</p>
+                        </div>
+                        <div className="p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-gray-100">
+                            <h4 className="text-xl font-bold mb-3">Local SEO Experts</h4>
+                            <p className="text-gray-600 text-sm">Valid strategies to help you dominate local search results and connect with customers in your specific geographic area.</p>
+                        </div>
+                        <div className="p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-gray-100">
+                            <h4 className="text-xl font-bold mb-3">Holistic Growth</h4>
+                            <p className="text-gray-600 text-sm">From brand strategy to content creation, we handle every aspect of your digital presence to ensure consistent growth.</p>
                         </div>
                     </div>
                 </div>

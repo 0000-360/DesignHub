@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa'
+import { FaTwitter, FaLinkedinIn, FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa'
 
 const services = [
     { name: 'Brand Strategy', path: '/services/brand-strategy' },
@@ -47,6 +47,12 @@ const Footer = () => {
                             </a>
                             <a href="https://www.instagram.com/designhub_offl?igsh=MTBqZWRsM2x5eDVzcQ==" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300">
                                 <FaInstagram className="text-lg" />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300">
+                                <FaFacebook className="text-lg" />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300">
+                                <FaYoutube className="text-lg" />
                             </a>
                         </div>
                     </div>

@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Loading from './components/Loading'
+import Chatbot from './components/Chatbot'
 
 // Lazy loading pages
 const Home = lazy(() => import('./pages/Home'))
@@ -46,10 +47,12 @@ function App() {
                             <Route path="/services/visual-design" element={<VisualDesign />} />
                             <Route path="/services/ui-ux-design" element={<UIUXDesign />} />
                             <Route path="/services/content-creation" element={<ContentCreation />} />
+                            <Route path="/services/ai-solutions" element={<AISolutions />} />
                         </Routes>
                     </Suspense>
                 </div>
                 <Footer />
+                <Chatbot />
             </div>
         </Router>
     )
