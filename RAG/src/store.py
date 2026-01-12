@@ -32,18 +32,27 @@ def get_vector_store():
     
     # Check if running in Vercel (read-only filesystem)
     if os.environ.get("VERCEL"):
-        # In Vercel, we can only read from the directory
-        # We need to construct the absolute path relative to the runtime execution
-        # usually /var/task/rag/chroma_db or similar
-        # For simplicity, we assume the bundled processing copies it correctly.
-        # However, Chroma might try to write lock. 
-        # setting client_settings to read only if possible or just using ephemeral for query?
-        # Standard Chroma persistent client tries to write.
-        # We try to use the directory as is.
-        pass
+        # Copy the bundled database to /tmp so it's writable
+        writable_dir = "/tmp/chroma_db"
+        
+        # Only copy if not already there (though Vercel instances are ephemeral, so usually it's clean)
+        if not os.path.exists(writable_dir):
+            try:
+                print(f"Copying ChromaDB from {PERSIST_DIRECTORY} to {writable_dir}...")
+                shutil.copytree(PERSIST_DIRECTORY, writable_dir)
+                print("Copy complete.")
+            except Exception as e:
+                print(f"Error copying DB: {e}")
+                # Fallback to original path if copy fails
+                pass
+        
+        # Point to the writable directory
+        persist_dir = writable_dir
+    else:
+        persist_dir = PERSIST_DIRECTORY
 
     vector_store = Chroma(
-        persist_directory=PERSIST_DIRECTORY,
+        persist_directory=persist_dir,
         embedding_function=embedding_function
     )
     return vector_store

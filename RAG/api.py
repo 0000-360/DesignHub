@@ -27,18 +27,30 @@ class ChatResponse(BaseModel):
     answer: str
     sources: list
 
-# Global RAG instance
+# Global state
 rag_system = None
+init_error = None
 
 @app.on_event("startup")
 async def startup_event():
-    global rag_system
+    global rag_system, init_error
     # Initialize RAG System on startup
     try:
         rag_system = RAGSystem()
         print("RAG System initialized successfully.")
     except Exception as e:
+        init_error = str(e)
         print(f"Failed to initialize RAG System: {e}")
+
+@app.get("/")
+def health_check():
+    status = "healthy" if rag_system else "degraded"
+    return {
+        "status": status,
+        "service": "DesignHub RAG API",
+        "rag_initialized": rag_system is not None,
+        "error": init_error
+    }
 
 @app.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
