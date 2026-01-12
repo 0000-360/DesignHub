@@ -369,7 +369,7 @@ const Home = () => {
                                         >
                                             Visit Website
                                         </a>
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -425,8 +425,8 @@ const Home = () => {
                                 </div>
 
                                 {/* Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                                    <div className="transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0 transition-transform duration-300">
                                         <p className="text-orange-400 font-bold text-sm mb-2">Video Editing</p>
                                         <h3 className="text-white text-2xl font-bold mb-2">Viral Instagram Reel</h3>
                                     </div>
