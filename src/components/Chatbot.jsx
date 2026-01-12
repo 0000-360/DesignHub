@@ -38,7 +38,7 @@ const Chatbot = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:8000/chat', {
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -112,8 +112,8 @@ const Chatbot = () => {
                                 >
                                     <div
                                         className={`max-w-[85%] p-3.5 rounded-2xl shadow-sm relative ${msg.role === 'user'
-                                                ? 'bg-gradient-to-br from-[#FF6B35] to-[#FF8C61] text-white rounded-br-none'
-                                                : 'bg-white border border-gray-100 text-gray-800 rounded-bl-none'
+                                            ? 'bg-gradient-to-br from-[#FF6B35] to-[#FF8C61] text-white rounded-br-none'
+                                            : 'bg-white border border-gray-100 text-gray-800 rounded-bl-none'
                                             }`}
                                     >
                                         {msg.role === 'assistant' && (
