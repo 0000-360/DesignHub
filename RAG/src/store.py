@@ -22,17 +22,14 @@ def get_vector_store():
     import chromadb
     
     # FastEmbed options
-    # Use bundled model in rag/models to avoid runtime download
-    models_dir = os.path.join(RAG_DIR, "models")
-    
-    # Ensure it exists (it should if bundled)
-    if not os.path.exists(models_dir):
-         # If missing, it will try to download (fail on Vercel if large, but fallback)
-         print(f"Warning: Model directory {models_dir} not found. Using partial cache or default.")
+    # On Vercel, we must use /tmp for any model downloading/caching
+    cache_dir = None
+    if os.environ.get("VERCEL"):
+        cache_dir = "/tmp"
 
     embedding_function = FastEmbedEmbeddings(
         model_name="BAAI/bge-small-en-v1.5",
-        cache_dir=models_dir
+        cache_dir=cache_dir
     )
     
     # Check if running in Vercel (read-only filesystem)
