@@ -16,20 +16,23 @@ def get_vector_store():
     """
     Initialize and return the Chroma vector store with FastEmbed embeddings.
     """
-    # Lazy imports to prevent load-time crashes if sqlite is bad
-    from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
+    # Lazy imports
+    # from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
+    from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
     from langchain_chroma import Chroma
     import chromadb
     
-    # FastEmbed options
-    # On Vercel, we must use /tmp for any model downloading/caching
-    cache_dir = None
-    if os.environ.get("VERCEL"):
-        cache_dir = "/tmp"
+    # Use HuggingFace API for embeddings to save space on Vercel
+    # This requires HUGGINGFACEHUB_API_TOKEN in .env
+    api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+    
+    # Fallback/Warning if no key (will fail at runtime if not set, but build will pass)
+    if not api_key:
+        print("WARNING: HUGGINGFACEHUB_API_TOKEN not set. Embeddings will fail.")
 
-    embedding_function = FastEmbedEmbeddings(
-        model_name="BAAI/bge-small-en-v1.5",
-        cache_dir=cache_dir
+    embedding_function = HuggingFaceInferenceAPIEmbeddings(
+        api_key=api_key,
+        model_name="BAAI/bge-small-en-v1.5" 
     )
     
     # Check if running in Vercel (read-only filesystem)
