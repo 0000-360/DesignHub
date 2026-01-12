@@ -10,9 +10,22 @@ if os.environ.get("VERCEL"):
     except ImportError:
         pass
 
-from fastapi import FastAPI
-from rag.api import app as fastapi_app
-
-# Vercel entry point
-# It expects a variable named 'app'
-app = fastapi_app
+try:
+    # Ensure the project root is in sys.path so we can import 'rag'
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    
+    from rag.api import app as fastapi_app
+    app = fastapi_app
+except Exception as e:
+    # Fallback to a basic app that displays the error
+    from fastapi import FastAPI
+    from fastapi.responses import JSONResponse
+    
+    app = FastAPI()
+    
+    @app.api_route("/{path_name:path}", methods=["GET", "POST", "PUT", "DELETE"])
+    def catch_all(path_name: str):
+        return JSONResponse(
+            status_code=500,
+            content={"status": "error", "message": "Failed to import application", "detail": str(e)}
+        )
