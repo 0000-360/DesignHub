@@ -10,70 +10,73 @@ from typing import List
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Go up one level to rag/
 RAG_DIR = os.path.dirname(BASE_DIR)
-PERSIST_DIRECTORY = os.path.join(RAG_DIR, "chroma_db")
+# PERSIST_DIRECTORY = os.path.join(RAG_DIR, "chroma_db") # Removed as no longer used for Pinecone
 
 def get_vector_store():
     """
-    Initialize and return the Chroma vector store with FastEmbed embeddings.
+    Initialize and return the Pinecone vector store with Cloud Embeddings.
     """
     # Lazy imports
-    # from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
     from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
-    from langchain_chroma import Chroma
-    import chromadb
+    from langchain_pinecone import PineconeVectorStore
+    from pinecone import Pinecone
     
-    # Use HuggingFace API for embeddings to save space on Vercel
-    # This requires HUGGINGFACEHUB_API_TOKEN in .env
+    # 1. Embeddings (Hugging Face)
     api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-    
-    # Fallback/Warning if no key (will fail at runtime if not set, but build will pass)
     if not api_key:
-        print("WARNING: HUGGINGFACEHUB_API_TOKEN not set. Embeddings will fail.")
+        print("WARNING: HUGGINGFACEHUB_API_TOKEN not set.")
 
     embedding_function = HuggingFaceInferenceAPIEmbeddings(
         api_key=api_key,
         model_name="BAAI/bge-small-en-v1.5" 
     )
-    
-    # Check if running in Vercel (read-only filesystem)
-    if os.environ.get("VERCEL"):
-        # Copy the bundled database to /tmp so it's writable
-        writable_dir = "/tmp/chroma_db"
-        
-        # Only copy if not already there (though Vercel instances are ephemeral, so usually it's clean)
-        if not os.path.exists(writable_dir):
-            try:
-                print(f"Copying ChromaDB from {PERSIST_DIRECTORY} to {writable_dir}...")
-                shutil.copytree(PERSIST_DIRECTORY, writable_dir)
-                print("Copy complete.")
-            except Exception as e:
-                print(f"Error copying DB: {e}")
-                # Fallback to original path if copy fails
-                pass
-        
-        # Point to the writable directory
-        persist_dir = writable_dir
-    else:
-        persist_dir = PERSIST_DIRECTORY
 
-    vector_store = Chroma(
-        persist_directory=persist_dir,
-        embedding_function=embedding_function
+    # 2. Vector Store (Pinecone)
+    pc_api_key = os.getenv("PINECONE_API_KEY")
+    index_name = os.getenv("PINECONE_INDEX_NAME", "designhub-rag")
+
+    if not pc_api_key:
+        print("WARNING: PINECONE_API_KEY not set.")
+        # Ensure it doesn't crash during build, but will fail at runtime if key missing
+        return None
+
+    # Connect to Pinecone
+    vector_store = PineconeVectorStore(
+        index_name=index_name,
+        embedding=embedding_function,
+        pinecone_api_key=pc_api_key
     )
+    
     return vector_store
 
-def add_documents_to_store(documents: List[Document]):
+def add_documents_to_store(chunks: List[Document]):
     """
-    Adds a list of documents to the vector store.
+    Adds documents to the Pinecone store.
     """
     vector_store = get_vector_store()
-    vector_store.add_documents(documents)
-    # Chroma persists automatically in newer versions, but explicitly allowed usually.
-    return vector_store
+    if vector_store:
+        vector_store.add_documents(chunks)
+        print(f"Added {len(chunks)} documents to Pinecone.")
+    else:
+        print("Failed to get vector store. Documents not added.")
 
 def clear_vector_store():
     """
-    Clears the existing vector store by removing the persistence directory.
+    Deletes all vectors in the Pinecone index.
     """
-    if os.path.exists(PERSIST_DIRECTORY):
-        shutil.rmtree(PERSIST_DIRECTORY)
+    from pinecone import Pinecone
+    
+    pc_api_key = os.getenv("PINECONE_API_KEY")
+    index_name = os.getenv("PINECONE_INDEX_NAME", "designhub-rag")
+    
+    if not pc_api_key:
+        print("Cannot clear store: PINECONE_API_KEY missing.")
+        return
+
+    try:
+        pc = Pinecone(api_key=pc_api_key)
+        index = pc.Index(index_name)
+        index.delete(delete_all=True)
+        print("Pinecone index cleared.")
+    except Exception as e:
+        print(f"Error clearing Pinecone index: {e}")
