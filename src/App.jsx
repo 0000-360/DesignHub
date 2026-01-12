@@ -3,7 +3,11 @@ import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Loading from './components/Loading'
-import Chatbot from './components/Chatbot'
+// // import Chatbot from './components/Chatbot'
+
+// ...
+
+// <Chatbot />
 
 // Lazy loading pages
 const Home = lazy(() => import('./pages/Home'))
@@ -52,7 +56,7 @@ function App() {
                     </Suspense>
                 </div>
                 <Footer />
-                <Chatbot />
+                {/* <Chatbot /> */}
             </div>
         </Router>
     )
